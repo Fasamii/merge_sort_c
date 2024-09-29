@@ -22,13 +22,12 @@ void merge_sort(int list[], int from, int to) {
         int right[right_len];
 
         int temp = from;
-        for(int i = 0; i < (mid-from+1); i++) {
+        for(int i = 0; i < left_len; i++) {
             left[i] = list[temp];
             temp++;
         }
-
         temp = mid + 1;
-        for(int i = 0; i < (to-mid); i++) {
+        for(int i = 0; i < right_len; i++) {
             right[i] = list[temp];
             temp++;
         }
@@ -38,7 +37,7 @@ void merge_sort(int list[], int from, int to) {
 
         for(int i = from; i < to + 1; i++) {
 
-            if((left[lx] > right[rx])) {
+            if((left[lx] >= right[rx])) {
                 if(rx < right_len) {
                     list[i] = right[rx];
                     rx++;    
@@ -46,7 +45,7 @@ void merge_sort(int list[], int from, int to) {
                     list[i] = left[lx];
                     lx++;
                 }
-            } else if(left[lx] < right[rx]) {
+            } else if(left[lx] <= right[rx]) {
                 if(lx < left_len) {
                     list[i] = left[lx];
                     lx++;
@@ -56,7 +55,6 @@ void merge_sort(int list[], int from, int to) {
                 }
             }
         }
-        //print_list(list, 10);
     } else { return; }
 }
 
@@ -75,7 +73,7 @@ void randomize(int list[], int size) {
 
 int main(void) {
 
-    int list[] = {9,3,8,7,4,6,5,1,0,2,22,34,99,56,43,21,11,54};
+    int list[] = {0,1,1,1,2,3,4,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30};
     int size = (sizeof(list) / sizeof(list[0])) - 1;
     
     randomize(list, size);
